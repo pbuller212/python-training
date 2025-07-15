@@ -43,3 +43,24 @@ count = gdp.group_by(["country", "code"]).agg(pl.len())
 count.max() ## REMEMBER this is not the same rows
 
 
+## Objective 1: Get the min and max gdp for each country and the year this happend
+# Start with one country
+maf = gdp.filter(pl.col("code") == "MAF") # pick a country with a few records
+maf.with_columns(
+    lowest_gdp = pl.col("gdp").get(pl.col("gdp").arg.min()).over("code")  # the over is a kind of group by
+    lowest_year = pl.col("year").get(pl.col("gdp").arg.min()).over("code")  # Gets the year column based on min of gdp
+)
+
+# The full set 
+gdp = gdp.with_columns(
+    lowest_gdp = pl.col("gdp").get(pl.col("gdp").arg.min()).over("code")  # the over is a kind of group by
+    lowest_year = pl.col("year").get(pl.col("gdp").arg.min()).over("code")  # Gets the year column based on min of gdp
+    highest_gdp = pl.col("gdp").get(pl.col("gdp").arg.max()).over("code")  
+    highest_year = pl.col("year").get(pl.col("gdp").arg.max()).over("code")
+)
+
+# This results in every row having the min and max gdp and year in it. Not really what is needed, so should build a pivot table
+gdp.pivot("year", index=["country", "code"], values="gdp", sort_columns=True)
+
+# This results in a column for each year with the max amount
+gdp_pivot = gdp_pivot.with_columns(best_gdp=pl.max_horizontal(gdp_pivot.columns[2:66]))
