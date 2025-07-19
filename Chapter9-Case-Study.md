@@ -96,3 +96,20 @@ gdp.wrtie_csv("results/per_capita.csv")
 rd = pl.read_csv("raw/expenditures", columns=["LOCATION", "Country", "TIME", "Government"])
 # rename column names
 rd = rd.select(code=pl.col("LOCATION"), year=pl.col("TIME"), spend=pl.column("Government")) 
+# The spend columns was in 1000's so need to convert
+rd = rd.with_columns(k_spend=pl.col("spend")*1000)
+rd = rd.drop("spend")
+gdp = gdp.join(rd, on=["code", "year"], how="left")
+gdp = gdp.with_columns(
+    spend_pct = pl.col("k_spend") / pl.col("gdp")
+)
+gdp.write_csv("processed/gdp_report.csv")
+```
+
+Overview
+* Data is messy
+* Verify the expected data types
+* Sanity check the bounds using `.describe()`
+* Run experiments on small sample to verify code is correct
+  * Only when satisfied commit to the dataframe
+* Use `Config` to change viewing modes
