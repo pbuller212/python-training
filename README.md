@@ -1,3 +1,10 @@
-# Polars for Power Users
+# Python Courses
 
-These are my note for learning the python data library polars from the Talk Python course [Polars for Power Users](https://training.talkpython.fm/courses/details/polars-for-power-users).
+These are notes from python courses. Right now it is just from Talk Python.
+
+## Courses
+
+### Polars for Power Users
+
+* [Course link](https://training.talkpython.fm/courses/details/polars-for-power-users)  
+* [Github repository](https://github.com/talkpython/polars-for-power-users-course)
