@@ -1,6 +1,6 @@
 # Python Courses
 
-These are notes from python courses. Right now it is just from Talk Python.
+These are notes from python courses. Currently, only includes course from Talk Python.
 
 ## Courses
 
