@@ -1,3 +1,5 @@
+[Course Page](https://training.talkpython.fm/courses/details/python-data-visualization)
+
 Goals of Data Visualization
 * analyza data to support reasoning
 * answer questions
