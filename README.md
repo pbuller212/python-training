@@ -13,3 +13,6 @@ These are notes from python courses. Currently, only includes course from Talk P
 
 * [Course link](https://training.talkpython.fm/courses/details/python-data-visualization)
 * [Github repository](https://github.com/talkpython/python-data-visualization)
+
+To start a jupyter notebook
+`uv run jupyter lab`
