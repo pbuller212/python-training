@@ -13,3 +13,12 @@ Environment setup
 Data set is at `data/vehicles.csv`
 
 ![Description of the data set](data_set.png)
+
+Figure api vs Axes api
+* an **Axes** is a singular plot
+* the **Figure** can have one or more Axes
+
+Two interfaces to generating the visualization
+* pyplot - simple interactive plots
+* object oriented - *This is the preferred way*
+
